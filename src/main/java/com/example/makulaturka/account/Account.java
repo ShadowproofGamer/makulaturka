@@ -1,11 +1,6 @@
 package com.example.makulaturka.account;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
-import groovyjarjarantlr4.v4.runtime.misc.NotNull;
 import jakarta.persistence.*;
-import org.hibernate.annotations.OnDelete;
-import org.hibernate.annotations.OnDeleteAction;
 
 @Entity
 @Table
@@ -23,15 +18,104 @@ public class Account {
     //@Column(name = "id", updatable = false, nullable = false)
     private Long id;
     private String firstName;
-    private Float lastName;
-    private Float price;
+    private String lastName;
+    private String email;
+    private String phone;
+    private String login;
+    private String password;
 
-    //TODO proper fields and constructors
-    public Account(Long id) {
-        this.id = id;
-    }
+
+
 
     public Account() {
 
+    }
+
+    public Account(String firstName, String lastName, String email, String phone, String login, String password) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.phone = phone;
+        this.login = login;
+        this.password = password;
+    }
+
+    public Account(Long id, String firstName, String lastName, String email, String phone, String login, String password) {
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.phone = phone;
+        this.login = login;
+        this.password = password;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getLogin() {
+        return login;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    @Override
+    public String toString() {
+        return "Account{" +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", email='" + email + '\'' +
+                ", phone='" + phone + '\'' +
+                ", login='" + login + '\'' +
+                ", password='" + "*****" + '\'' +
+                '}';
     }
 }
