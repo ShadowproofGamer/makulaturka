@@ -77,8 +77,8 @@ public class Client {
     public String toString() {
         return "Client{" +
                 "id=" + id +
-                ", accountId=" + accountId.getId() +
-                ", addressId=" + addressId.getId() +
+                ", accountId=" + accountId +
+                ", addressId=" + addressId +
                 ", points=" + points +
                 '}';
     }

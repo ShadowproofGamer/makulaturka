@@ -10,7 +10,7 @@
     </head>
     <body>
         <div layout:fragment="content">
-            <p th:each="i : ${clientList}" th:value="${i}"></p>
+            <p th:each="i : ${clientList}" th:text="${i}"></p>
         </div>
     </body>
 </html>
