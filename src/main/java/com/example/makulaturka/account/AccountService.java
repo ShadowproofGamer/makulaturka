@@ -29,7 +29,6 @@ public class AccountService {
         return optionalAccount.get();
     }
 
-    //TODO adding account
     public void addNewAccount() {
         accountRepository.save(new Account());
     }

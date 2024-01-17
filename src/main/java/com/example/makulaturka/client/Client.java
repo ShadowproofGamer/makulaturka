@@ -10,7 +10,6 @@ import org.hibernate.annotations.OnDeleteAction;
 @Entity
 @Table
 public class Client {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

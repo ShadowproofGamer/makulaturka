@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html
+        xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+        xmlns:th="http://www.thymeleaf.org"
+        lang="pl"
+        layout:decorate="_shared/_layout">
+    <head>
+        <meta charset="UTF-8">
+        <title layout:fragment="title">Dane użytkownika</title>
+    </head>
+    <body>
+        <div layout:fragment="content">
+            <p th:each="i : ${clientList}" th:value="${i}"></p>
+        </div>
+    </body>
+</html>
