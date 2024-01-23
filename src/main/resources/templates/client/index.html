@@ -10,7 +10,28 @@
     </head>
     <body>
         <div layout:fragment="content">
-            <p th:each="i : ${clientList}" th:text="${i}"></p>
+<!--            <p th:each="i : ${clientList}" th:text="${i}"></p>-->
+            <form th:object="${client.account}" action="#" th:action="@{/client/edit}" method="post" id="edit-account">
+                <input type="text" th:field="*{id}" readonly hidden="hidden">
+                <input type="text" th:field="*{firstName}" readonly>
+                <input type="text" th:field="*{lastName}" readonly>
+                <input type="text" th:field="*{email}" readonly>
+                <input type="text" th:field="*{phone}" readonly>
+                <input type="text" th:field="*{login}" readonly>
+                <input type="text" th:field="*{password}" readonly>
+                <input type="submit" value="Submit" />
+                <input type="reset" value="Reset" hidden="hidden"/>
+            </form>
+            <form th:object="${client.address}" action="#" th:action="@{/client/edit}" method="post" id="edit-address">
+                <input type="text" th:field="*{id}" readonly hidden="hidden">
+                <input type="text" th:field="*{street}" readonly>
+                <input type="text" th:field="*{buildingNumber}" readonly>
+                <input type="text" th:field="*{flatNumber}" readonly>
+                <input type="text" th:field="*{postalCode}" readonly>
+                <input type="text" th:field="*{city}" readonly>
+                <input type="submit" value="Submit" />
+                <input type="reset" value="Reset" hidden="hidden"/>
+            </form>
         </div>
     </body>
 </html>

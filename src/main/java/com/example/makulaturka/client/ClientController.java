@@ -29,12 +29,17 @@ public class ClientController {
 
     @GetMapping
     public String getClient(Model model) {
-        List<Client> clientList = clientService.getClients();
-        model.addAttribute("clientList", clientList);
-        List<Address> addressList = addressService.getAddresses();
-        model.addAttribute("addressList", addressList);
-        List<Account> accountList = accountService.getAccounts();
-        model.addAttribute("accountList", accountList);
+//        List<Client> clientList = clientService.getClients();
+//        model.addAttribute("clientList", clientList);
+//        List<Address> addressList = addressService.getAddresses();
+//        model.addAttribute("addressList", addressList);
+//        List<Account> accountList = accountService.getAccounts();
+//        model.addAttribute("accountList", accountList);
+
+        Client client = clientService.getClient(1L);
+        model.addAttribute("client", client);
         return "client/index";
     }
+
+
 }

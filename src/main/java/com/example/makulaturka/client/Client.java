@@ -2,10 +2,7 @@ package com.example.makulaturka.client;
 
 import com.example.makulaturka.account.Account;
 import com.example.makulaturka.address.Address;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-import org.hibernate.annotations.OnDelete;
-import org.hibernate.annotations.OnDeleteAction;
 
 @Entity
 @Table
@@ -17,27 +14,27 @@ public class Client {
     @JoinColumn(name = "account_id", nullable = false)
     //@OnDelete(action = OnDeleteAction.CASCADE)
     //@JsonIgnore
-    private Account accountId;
+    private Account account;
     @OneToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "address_id", nullable = false)
     //@OnDelete(action = OnDeleteAction.CASCADE)
     //@JsonIgnore
-    private Address addressId;
+    private Address address;
     private Long points;
 
     public Client() {
     }
 
-    public Client(Long id, Account accountId, Address addressId, Long points) {
+    public Client(Long id, Account account, Address address, Long points) {
         this.id = id;
-        this.accountId = accountId;
-        this.addressId = addressId;
+        this.account = account;
+        this.address = address;
         this.points = points;
     }
 
-    public Client(Account accountId, Address addressId, Long points) {
-        this.accountId = accountId;
-        this.addressId = addressId;
+    public Client(Account account, Address address, Long points) {
+        this.account = account;
+        this.address = address;
         this.points = points;
     }
 
@@ -49,20 +46,20 @@ public class Client {
         this.id = id;
     }
 
-    public Account getAccountId() {
-        return accountId;
+    public Account getAccount() {
+        return account;
     }
 
-    public void setAccountId(Account accountId) {
-        this.accountId = accountId;
+    public void setAccount(Account accountId) {
+        this.account = accountId;
     }
 
-    public Address getAddressId() {
-        return addressId;
+    public Address getAddress() {
+        return address;
     }
 
-    public void setAddressId(Address addressId) {
-        this.addressId = addressId;
+    public void setAddress(Address addressId) {
+        this.address = addressId;
     }
 
     public Long getPoints() {
@@ -77,8 +74,8 @@ public class Client {
     public String toString() {
         return "Client{" +
                 "id=" + id +
-                ", accountId=" + accountId +
-                ", addressId=" + addressId +
+                ", accountId=" + account +
+                ", addressId=" + address +
                 ", points=" + points +
                 '}';
     }
