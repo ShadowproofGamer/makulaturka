@@ -37,7 +37,11 @@ public class ClientController {
 //        model.addAttribute("accountList", accountList);
 
         Client client = clientService.getClient(1L);
+        Address address = client.getAddress();
+        Account account = client.getAccount();
         model.addAttribute("client", client);
+        model.addAttribute("address", address);
+        model.addAttribute("account", account);
         return "client/index";
     }
 
