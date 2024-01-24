@@ -9,16 +9,15 @@
     <title layout:fragment="title">Dane użytkownika</title>
 </head>
 <body>
-<div layout:fragment="content" style="margin-left: auto; margin-right: auto">
+<div layout:fragment="content" >
     <!--            <p th:each="i : ${clientList}" th:text="${i}"></p>-->
     <h3 style="text-align: center">Dane użytkownika</h3>
     <table style="margin-left: auto; margin-right: auto">
         <tbody>
         <tr>
             <td>
-                <form  action="#" th:action="@{/client/editAccount}" th:object="${account}" method="post"
-                      id="edit-account">
-                    <input type="number" th:field="*{id}" readonly hidden="hidden">
+                <form th:object="${account}" action="#" th:action="@{/client/edit}" method="post" id="edit-account">
+                    <input type="text" th:field="*{id}" readonly hidden="hidden">
                     <table style="margin-left: auto; margin-right: auto">
                         <tbody>
                         <tr>
@@ -43,12 +42,12 @@
                         </tr>
                         <tr>
                             <td>Hasło:</td>
-                            <td><input type="password" th:field="*{password}" readonly></td>
+                            <td><input type="text" value="*****" readonly></td>
                         </tr>
                         </tbody>
                     </table>
-                    <input type="submit" value="Edytuj dane osobowe" class="btn btn-secondary"
-                           style="margin-left: auto; margin-right: auto"/>
+                    <input type="text" th:field="*{password}" readonly hidden="hidden">
+                    <input type="submit" value="Zatwierdź" hidden="hidden"/>
                     <input type="reset" value="Reset" hidden="hidden"/>
                 </form>
             </td>
@@ -56,8 +55,7 @@
                 &ensp;&ensp;&ensp;
             </td>
             <td>
-                <form th:object="${address}" action="#" th:action="@{/client/editAddress}" method="post"
-                      id="edit-address">
+                <form th:object="${address}" action="#" th:action="@{/client/edit}" method="post" id="edit-address">
                     <input type="text" th:field="*{id}" readonly hidden="hidden">
                     <table style="margin-left: auto; margin-right: auto">
                         <tbody>
@@ -83,15 +81,13 @@
                         </tr>
                         </tbody>
                     </table>
-                    <input type="submit" value="Edytuj dane kontaktowe" class="btn btn-secondary"
-                           style="margin-left: auto; margin-right: auto"/>
+                    <input type="submit" value="Zatwierdź" hidden="hidden"/>
                     <input type="reset" value="Reset" hidden="hidden"/>
                 </form>
             </td>
         </tr>
         </tbody>
     </table>
-    <h5 style="text-align: center; margin-top: 1rem" >liczba punktów = [[${client.getPoints()}]]</h5>
 
 
 </div>

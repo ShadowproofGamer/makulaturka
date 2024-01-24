@@ -22,7 +22,7 @@ public class AppConfig {
                     1L,
                     "Jakub",
                     "Cebula",
-                    "266886@student.pwr.edu.pl",
+                    null, //"266886@student.pwr.edu.pl"
                     null,
                     "JakCeb",
                     "password"

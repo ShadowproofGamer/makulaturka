@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html
+        xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+        xmlns:th="http://www.thymeleaf.org"
+        lang="pl"
+        layout:decorate="_shared/_layout">
+<head>
+    <meta charset="UTF-8">
+    <title layout:fragment="title">Dane użytkownika</title>
+</head>
+<body>
+<div layout:fragment="content">
+    <!--            <p th:each="i : ${clientList}" th:text="${i}"></p>-->
+    <h3 style="text-align: center">Dane użytkownika</h3>
+    <table style="margin-left: auto; margin-right: auto">
+        <tbody>
+        <tr>
+            <td>
+                <form th:object="${address}" action="#" th:action="@{/client/editAddressU}" method="post"
+                      id="edit-address">
+                    <input type="text" th:field="*{id}" readonly hidden="hidden">
+                    <table style="margin-left: auto; margin-right: auto">
+                        <tbody>
+                        <tr>
+                            <td>Ulica:</td>
+                            <td><input type="text" th:field="*{street}"></td>
+                        </tr>
+                        <tr>
+                            <td>Numer budynku:</td>
+                            <td><input type="number" min="1" th:field="*{buildingNumber}"></td>
+                        </tr>
+                        <tr>
+                            <td>Numer mieszkania:</td>
+                            <td><input type="number" step="1" min="1" th:field="*{flatNumber}"></td>
+                        </tr>
+                        <tr>
+                            <td>Kod pocztowy:</td>
+                            <td><input type="text" th:field="*{postalCode}"></td>
+                        </tr>
+                        <tr>
+                            <td>Miasto:</td>
+                            <td><input type="text" th:field="*{city}"></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <select name="clientId" hidden="hidden">
+                        <option th:value="${clientId}" th:text="${clientId}" hidden="hidden">
+                        </option>
+                    </select>
+                    <input type="submit" value="Zatwierdź" class="btn btn-secondary"/>
+                    <!--                    <input type="reset" value="Reset"/>-->
+                    <a class="btn btn-secondary" th:href="@{/client}">Powrót</a>
+                </form>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
