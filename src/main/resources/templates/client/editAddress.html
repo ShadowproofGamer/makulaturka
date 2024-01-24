@@ -23,7 +23,7 @@
                         <tbody>
                         <tr>
                             <td>Ulica:</td>
-                            <td><input type="text" th:field="*{street}"></td>
+                            <td><input type="text" th:field="*{street}" pattern="^[a-zA-Z]*$"></td>
                         </tr>
                         <tr>
                             <td>Numer budynku:</td>
@@ -35,11 +35,11 @@
                         </tr>
                         <tr>
                             <td>Kod pocztowy:</td>
-                            <td><input type="text" th:field="*{postalCode}"></td>
+                            <td><input type="text" th:field="*{postalCode}" pattern="^\d{2}-\d{3}$"></td>
                         </tr>
                         <tr>
                             <td>Miasto:</td>
-                            <td><input type="text" th:field="*{city}"></td>
+                            <td><input type="text" th:field="*{city}" pattern="^[a-zA-Z]*$"></td>
                         </tr>
                         </tbody>
                     </table>

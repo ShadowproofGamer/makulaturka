@@ -24,11 +24,11 @@
                         <tbody>
                         <tr>
                             <td>Imię:</td>
-                            <td><input type="text" th:field="*{firstName}"></td>
+                            <td><input type="text" th:field="*{firstName}" pattern="^[a-zA-Z]*$"></td>
                         </tr>
                         <tr>
                             <td>Nazwisko:</td>
-                            <td><input type="text" th:field="*{lastName}"></td>
+                            <td><input type="text" th:field="*{lastName}" pattern="^[a-zA-Z]*$"></td>
                         </tr>
                         <tr>
                             <td>Email:</td>
@@ -36,7 +36,7 @@
                         </tr>
                         <tr>
                             <td>Numer telefonu:</td>
-                            <td><input type="text" th:field="*{phone}"></td>
+                            <td><input type="text" th:field="*{phone}" pattern="^\+\d{11}$|^\d{9}$"></td>
                         </tr>
                         <tr>
                             <td>Login:</td>
@@ -56,6 +56,7 @@
                     <input type="submit" value="Zatwierdź" class="btn btn-secondary"/>
                     <!--                    <input type="reset" value="Reset"/>-->
                     <a class="btn btn-secondary" th:href="@{/client}">Powrót</a>
+                    <a class="btn btn-secondary" th:href="@{/client/changePassword(clientId=${clientId})}">Zmień hasło</a>
                 </form>
             </td>
         </tr>

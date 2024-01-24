@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Objects;
 
 @Controller
 @RequestMapping(path = "client")
@@ -36,6 +37,7 @@ public class ClientController {
         model.addAttribute("account", account);
         return "client/index";
     }
+
     @PostMapping("/editAccount")
     public String editClientAccount(@ModelAttribute("account") Account account, @ModelAttribute("client") Client client, Model model) {
         model.addAttribute("clientId", client.getId());
@@ -46,13 +48,7 @@ public class ClientController {
     //@RequestParam("clientId") Long clientId,
     @PostMapping("/editAccountU")
     public String editClientAccountU(@RequestParam("clientId") Long clientId, @ModelAttribute("account") Account account, Model model) {
-        accountService.editAccount(account);
-        Client client = clientService.getClient(clientId);
-        Address address = client.getAddress();
-        model.addAttribute("client", client);
-        model.addAttribute("address", address);
-        model.addAttribute("account", account);
-        return "client/index";
+        return getString(clientId, account, model);
     }
 
     @PostMapping("/editAddress")
@@ -68,6 +64,38 @@ public class ClientController {
         addressService.editAddress(address);
         Client client = clientService.getClient(clientId);
         Account account = client.getAccount();
+        model.addAttribute("client", client);
+        model.addAttribute("address", address);
+        model.addAttribute("account", account);
+        return "client/index";
+    }
+
+    @GetMapping("/changePassword")
+    public String editClientPassword(@RequestParam("clientId") Long clientId, Model model) {
+        //@ModelAttribute("account") Account account, @ModelAttribute("client") Client client
+        model.addAttribute("clientId", clientId);
+        Account account = clientService.getClient(clientId).getAccount();
+        model.addAttribute("account", account);
+        model.addAttribute("errorPass", "");
+        return "client/changePassword";
+    }
+
+    //@RequestParam("clientId") Long clientId,
+    @PostMapping("/changePasswordU")
+    public String editClientPasswordU(@RequestParam("clientId") Long clientId, @ModelAttribute("account") Account account, @RequestParam("passwordConfirm") String confirmPass, Model model) {
+        if (!Objects.equals(account.getPassword(), confirmPass)){
+            model.addAttribute("clientId", clientId);
+            model.addAttribute("account", account);
+            model.addAttribute("errorPass", "Hasła muszą być identyczne!");
+            return "client/changePassword";
+        }
+        return getString(clientId, account, model);
+    }
+
+    private String getString(@RequestParam("clientId") Long clientId, @ModelAttribute("account") Account account, Model model) {
+        accountService.editAccount(account);
+        Client client = clientService.getClient(clientId);
+        Address address = client.getAddress();
         model.addAttribute("client", client);
         model.addAttribute("address", address);
         model.addAttribute("account", account);
