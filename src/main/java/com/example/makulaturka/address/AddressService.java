@@ -12,15 +12,26 @@ import java.util.Optional;
 public class AddressService {
     private final AddressRepository addressRepository;
 
+    /**
+     * konstruktor AddressService
+     * @param addressRepository referencja do BD adresów
+     */
     @Autowired
     public AddressService(AddressRepository addressRepository) {
         this.addressRepository = addressRepository;
     }
 
+    /**
+     * Funkcja zwracająca wszystkie adresy
+     */
     public List<Address> getAddresses() {
         return addressRepository.findAll();
     }
 
+    /**
+     * Funkcja zwracająca konkretny adres
+     * @param addressId numeryczne Id adresu
+     */
     public Address getAddress(Long addressId) {
         Optional<Address> optionalAddress = addressRepository.findById(addressId);
 

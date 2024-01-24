@@ -14,15 +14,26 @@ import java.util.Optional;
 public class ClientService {
     private final ClientRepository clientRepository;
 
+    /**
+     * konstruktor ClientService
+     * @param clientRepository referencja do BD klientów
+     */
     @Autowired
     public ClientService(ClientRepository clientRepository) {
         this.clientRepository = clientRepository;
     }
 
+    /**
+     * Funkcja zwracająca wszystkich klientów
+     */
     public List<Client> getClients() {
         return clientRepository.findAll();
     }
 
+    /**
+     * Funkcja zwracająca danego klienta
+     * @param clientId numeryczne Id klienta
+     */
     public Client getClient(Long clientId) {
         Optional<Client> optionalClient = clientRepository.findById(clientId);
 

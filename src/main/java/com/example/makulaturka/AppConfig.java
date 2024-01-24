@@ -15,6 +15,13 @@ import java.util.List;
 @Configuration
 public class AppConfig {
 
+    /**
+     * Wstępna konfiguracja danych (na potrzeby fazy implementacji)
+     * @param accountRepository referencja do BD kont
+     * @param addressRepository referencja do BD adresów
+     * @param clientRepository referencja do BD klientów
+     * @return dodaje obiekty do Bazy Danych
+     */
     @Bean
     CommandLineRunner commandLineRunner(AccountRepository accountRepository, AddressRepository addressRepository, ClientRepository clientRepository) {
         return args -> {

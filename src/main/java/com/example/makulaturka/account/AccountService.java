@@ -10,20 +10,31 @@ import java.util.Optional;
 public class AccountService {
     private final AccountRepository accountRepository;
 
+    /**
+     * konstruktor AccountService
+     * @param accountRepository referencja do BD kont
+     */
     @Autowired
     public AccountService(AccountRepository accountRepository) {
         this.accountRepository = accountRepository;
     }
 
+    /**
+     * Funkcja zwracająca wszystkie konta
+     */
     public List<Account> getAccounts() {
         return accountRepository.findAll();
     }
 
-    public Account getAccount(Long productId) {
-        Optional<Account> optionalAccount = accountRepository.findById(productId);
+    /**
+     * Funkcja zwracająca dany produkt
+     * @param accountId numeryczne Id konta
+     */
+    public Account getAccount(Long accountId) {
+        Optional<Account> optionalAccount = accountRepository.findById(accountId);
 
         if (optionalAccount.isEmpty()) {
-            throw new IllegalStateException("Could not find product with id " + productId);
+            throw new IllegalStateException("Could not find product with id " + accountId);
         }
 
         return optionalAccount.get();
@@ -33,16 +44,16 @@ public class AccountService {
         accountRepository.save(new Account());
     }
 
-    public void addNewAccount(Account product) {
-        accountRepository.save(product);
+    public void addNewAccount(Account account) {
+        accountRepository.save(account);
     }
 
-    public void deleteAccount(Long productId) {
-        accountRepository.deleteById(productId);
+    public void deleteAccount(Long accountId) {
+        accountRepository.deleteById(accountId);
     }
 
-    public void editAccount(Account product) {
+    public void editAccount(Account account) {
         //productRepository.deleteById(product.getId());
-        accountRepository.save(product);
+        accountRepository.save(account);
     }
 }

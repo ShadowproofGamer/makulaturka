@@ -42,10 +42,11 @@
                             <td>Login:</td>
                             <td><input type="text" th:field="*{login}" readonly></td>
                         </tr>
-                        <tr>
-                            <td>Hasło:</td>
-                            <td><input type="password" th:field="*{password}" readonly></td>
-                        </tr>
+<!--                        <tr>-->
+<!--                            <td>Hasło:</td>-->
+<!--                            <td></td>-->
+<!--                        </tr>-->
+                        <input type="text" th:field="*{password}" readonly hidden="hidden">
                         </tbody>
                     </table>
                     <select name="clientId" hidden="hidden">

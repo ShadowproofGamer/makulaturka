@@ -6,14 +6,8 @@ import jakarta.persistence.*;
 @Table
 public class Account {
     @Id
-    /*@SequenceGenerator(
-            name = "product_sequence",
-            sequenceName = "product_sequence",
-            allocationSize = 1
-    )*/
     @GeneratedValue(
             strategy = GenerationType.IDENTITY//, //SEQUENCE IDENTITY,
-            //generator = "product_sequence"
     )
     //@Column(name = "id", updatable = false, nullable = false)
     private Long id;

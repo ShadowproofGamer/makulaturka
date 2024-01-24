@@ -4,6 +4,7 @@ import com.example.makulaturka.account.Account;
 import com.example.makulaturka.address.Address;
 import jakarta.persistence.*;
 
+
 @Entity
 @Table
 public class Client {
@@ -25,6 +26,13 @@ public class Client {
     public Client() {
     }
 
+    /**
+     * konstruktor klienta
+     * @param id
+     * @param account
+     * @param address
+     * @param points
+     */
     public Client(Long id, Account account, Address address, Long points) {
         this.id = id;
         this.account = account;
@@ -32,6 +40,12 @@ public class Client {
         this.points = points;
     }
 
+    /**
+     * konstruktor nowego klienta
+     * @param account
+     * @param address
+     * @param points
+     */
     public Client(Account account, Address address, Long points) {
         this.account = account;
         this.address = address;

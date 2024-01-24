@@ -2,6 +2,7 @@ package com.example.makulaturka.address;
 
 import jakarta.persistence.*;
 
+
 @Entity
 @Table
 public class Address {
@@ -14,7 +15,15 @@ public class Address {
     private String postalCode;
     private String city;
 
-
+    /**
+     * konstruktor adresu
+     * @param id
+     * @param street
+     * @param buildingNumber
+     * @param flatNumber
+     * @param postalCode
+     * @param city
+     */
     public Address(Long id, String street, String buildingNumber, String flatNumber, String postalCode, String city) {
         this.id = id;
         this.street = street;
@@ -24,6 +33,14 @@ public class Address {
         this.city = city;
     }
 
+    /**
+     * konstruktor nowego adresu
+     * @param street
+     * @param buildingNumber
+     * @param flatNumber
+     * @param postalCode
+     * @param city
+     */
     public Address(String street, String buildingNumber, String flatNumber, String postalCode, String city) {
         this.street = street;
         this.buildingNumber = buildingNumber;
@@ -85,22 +102,10 @@ public class Address {
 
     @Override
     public String toString() {
-        return "Address{" +
-                "id=" + id +
-                ", street='" + street + '\'' +
-                ", buildingNumber='" + buildingNumber + '\'' +
-                ", flatNumber='" + flatNumber + '\'' +
-                ", postalCode='" + postalCode + '\'' +
-                ", city='" + city + '\'' +
-                '}';
+        return "Address{" + "id=" + id + ", street='" + street + '\'' + ", buildingNumber='" + buildingNumber + '\'' + ", flatNumber='" + flatNumber + '\'' + ", postalCode='" + postalCode + '\'' + ", city='" + city + '\'' + '}';
     }
 
-    public String humanReadableStringPL(){
-        return "Adres: \n" +
-                "Ulica = " + street + "\n" +
-                "Budynek = " + buildingNumber  + "\n" +
-                "Mieszkanie = nr " + flatNumber + "\n" +
-                "Kod pocztowy = " + postalCode + "\n" +
-                "Miasto = " + city;
-    }
+//    public String humanReadableStringPL() {
+//        return "Adres: \n" + "Ulica = " + street + "\n" + "Budynek = " + buildingNumber + "\n" + "Mieszkanie = nr " + flatNumber + "\n" + "Kod pocztowy = " + postalCode + "\n" + "Miasto = " + city;
+//    }
 }
